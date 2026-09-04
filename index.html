@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Smart Parking — Bangla + English ANPR</title>
+<style>
+  :root { --free:#1f9d55; --occ:#d64545; --bg:#0f1115; --card:#181b22; --text:#eaeaea; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  header { padding:20px 24px; border-bottom:1px solid #262a33; }
+  header h1 { margin:0 0 4px; font-size:20px; }
+  header p { margin:0; color:#9aa0aa; font-size:13px; }
+  main { padding:24px; display:grid; grid-template-columns: 1fr 320px; gap:24px; }
+  .panel { background:var(--card); border:1px solid #262a33; border-radius:10px; padding:18px; }
+  .grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-top:14px; }
+  .slot { border-radius:8px; padding:14px 6px; text-align:center; font-weight:600; font-size:13px; }
+  .slot.free { background: rgba(31,157,85,0.15); border:1px solid var(--free); color:var(--free); }
+  .slot.occ  { background: rgba(214,69,69,0.15); border:1px solid var(--occ); color:var(--occ); }
+  .stats { display:flex; gap:16px; font-size:13px; color:#9aa0aa; }
+  form { display:flex; flex-direction:column; gap:10px; margin-top:12px; }
+  input[type=file] { color:#9aa0aa; }
+  button { background:#3b6fed; color:white; border:none; border-radius:6px; padding:9px 12px; cursor:pointer; font-size:13px; }
+  button:hover { background:#2f5bd0; }
+  .result { margin-top:10px; font-size:13px; background:#11141a; border-radius:6px; padding:10px; white-space:pre-wrap; }
+  .log { font-size:12px; color:#9aa0aa; border-top:1px solid #262a33; padding-top:8px; margin-top:8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Smart Parking Monitor</h1>
+  <p>Bangla + English plate recognition · live slot guidance</p>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="stats" id="stats">Loading…</div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="panel">
+    <h3 style="margin-top:0;">Vehicle entry</h3>
+    <form id="entryForm">
+      <input type="file" name="file" accept="image/*" required />
+      <button type="submit">Detect plate &amp; assign slot</button>
+    </form>
+    <div class="result" id="entryResult"></div>
+
+    <h3>Vehicle exit</h3>
+    <form id="exitForm">
+      <input type="file" name="file" accept="image/*" required />
+      <button type="submit">Detect plate &amp; free slot</button>
+    </form>
+    <div class="result" id="exitResult"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
