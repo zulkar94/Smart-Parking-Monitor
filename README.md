@@ -23,8 +23,9 @@ Python parking system. Detects Bangla + English plates via OpenCV + EasyOCR, nor
 
 ```bash
 pip install -r requirements.txt
-python main.py
-# Visit http://localhost:8000
+uvicorn app.main:app --reload
+# API  http://localhost:8000
+# UI   open frontend/index.html
 ```
 
 ## License

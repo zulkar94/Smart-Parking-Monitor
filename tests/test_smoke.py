@@ -1,9 +1,9 @@
-def test_import():
-    """Smoke test: verify main modules import successfully."""
-    import anpr
-    import parking
-    import database
-    import schemas
+"""Smoke test: verify package modules import successfully."""
+
+
+def test_import() -> None:
+    from app import anpr, database, parking, schemas
+
     assert anpr
     assert parking
     assert database
